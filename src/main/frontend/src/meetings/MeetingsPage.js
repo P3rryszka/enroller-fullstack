@@ -30,18 +30,13 @@ export default function MeetingsPage({username}) {
         const response = await fetch('/api/meetings', {
             method: 'POST',
             body: JSON.stringify(meeting),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {'Content-Type': 'application/json'}
         });
         if (response.ok) {
             const nextMeetings = [...meetings, meeting];
             setMeetings(nextMeetings);
             setAddingNewMeeting(false);
         }
-    }
-
-    function handleDeleteMeeting(meeting) {
-        const nextMeetings = meetings.filter(m => m !== meeting);
-        setMeetings(nextMeetings);
     }
 
     function handleSignIn(meeting) {
